@@ -20,3 +20,5 @@ Route::view('about','about');
 
 // passing data through route
 Route::get('customers', 'CustomersController@list');
+// post data with form
+Route::post('customers', 'CustomersController@store');
