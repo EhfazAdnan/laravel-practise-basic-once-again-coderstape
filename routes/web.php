@@ -14,7 +14,7 @@
 // });
 
 // shorthand but only get view not pass any data
-Route::view('/','welcome');
+Route::view('/','home');
 Route::view('contact','contact');
 Route::view('about','about');
 
