@@ -3,31 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>@yield('title', 'Default title set here')</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     </head>
     <body>
 
-        <ul class="nav">
-            <li class="nav-item">
-               <a href="/" class="nav-link active">Home</a>
-            </li>
-
-            <li class="nav-item">
-               <a href="/about" class="nav-link active">About Us</a>
-            </li>
-
-            <li class="nav-item">
-               <a href="/contact" class="nav-link active">Contact Us</a>
-            </li>
-
-            <li class="nav-item">
-               <a href="/customers" class="nav-link active">Our Customers</a>
-            </li>
-        </ul>
-
         <div class="container">
+            @include('partials.nav')
             @yield('content')
         </div>
 
