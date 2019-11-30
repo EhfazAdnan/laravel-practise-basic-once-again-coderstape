@@ -19,13 +19,4 @@ Route::view('contact','contact');
 Route::view('about','about');
 
 // passing data through route
-Route::get('customers', function(){
-
-   $customers = [
-      'John Doe',
-      'Jane Doe',
-      'Bob The Builder',
-   ];
-
-   return view('internals.customers', ['customers' => $customers]);
-});
+Route::get('customers', 'CustomersController@list');
