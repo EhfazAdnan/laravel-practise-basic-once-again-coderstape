@@ -15,7 +15,7 @@
 
 // shorthand but only get view not pass any data
 Route::view('/','home');
-Route::view('about','about');
+Route::view('about','about')->middleware('test');
 
 // contact route for send email 
 Route::get('contact','ContactFormController@create');
