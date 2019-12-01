@@ -38,6 +38,15 @@
             </select>
          </div>
 
+         <div class="form-group">
+            <label for="company_id">Company</label>
+            <select name="company_id" id="company_id" class="form-control">
+               @foreach($companies as $company)
+                  <option value="{{ $company->id }}">{{ $company->name }}</option>
+               @endforeach
+            </select>
+         </div>
+
          <button type="submit" class="btn btn-primary">Add Customer</button>
       </form>
    </div>
@@ -51,6 +60,7 @@
       <ul>
          @foreach($activeCustomers as $active)
          <li>{{ $active->name }} - {{ $active->email }}</li>
+         <li>{{ $active->company->name }}</li>
          @endforeach
       </ul>
    </div>
@@ -63,5 +73,20 @@
          @endforeach
       </ul>
    </div>
+
+   <div class="row">
+      <div class="col-12">
+         @foreach($companies as $company)
+            <h6>{{ $company->name }}</h6>
+
+            <ul>
+               @foreach($company->customers as $customer)
+                  <li>{{ $customer->name }}</li>
+               @endforeach
+            </ul>
+         @endforeach
+      </div>
+   </div>
+
 </div>
 @endsection
