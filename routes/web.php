@@ -18,8 +18,8 @@ Route::view('/','home');
 Route::view('about','about')->middleware('test');
 
 // contact route for send email 
-Route::get('contact','ContactFormController@create');
-Route::post('contact','ContactFormController@store');
+Route::get('contact','ContactFormController@create')->name('contact.create');
+Route::post('contact','ContactFormController@store')->name('contact.store');
 
 // passing data through route
 Route::get('customers', 'CustomersController@index');
@@ -32,7 +32,7 @@ Route::get('customers/{customer}', 'CustomersController@show');
 // customer edit route for edit view
 Route::get('customers/{customer}/edit', 'CustomersController@edit');
 // update post route for details update
-Route::patch('customers/{customer}', 'CustomersController@update');
+Route::patch('customers/{customer}', 'CustomersController@update')->name('customers.update');
 // delete route
 Route::delete('customers/{customer}', 'CustomersController@destroy');
 
