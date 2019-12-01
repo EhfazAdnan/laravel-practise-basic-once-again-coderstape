@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class CustomersController extends Controller
 {
     public function list(){
-        $activeCustomers = Customer::where('active',1)->get();
-        $inactiveCustomers = Customer::where('active',0)->get();
+        $activeCustomers = Customer::active()->get();
+        $inactiveCustomers = Customer::inactive()->get();
         return view('internals.customers', ['activeCustomers' => $activeCustomers,'inactiveCustomers' => $inactiveCustomers]);
     }
 
@@ -29,4 +29,18 @@ class CustomersController extends Controller
 
         return back();
     }
+
+    // another way to store data
+    // public function store(){
+
+    //     $data = request()->validate([
+    //        'name' => 'required|min:3',
+    //        'email' => 'required|email',
+    //        'active' => 'required',
+    //     ]);
+    //     // mass assignment and for do that we must put fillable/guraded to the model
+    //     Customer::create($data);
+    //     return back();
+    // }
+    
 }
