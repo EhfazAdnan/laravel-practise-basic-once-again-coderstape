@@ -38,3 +38,7 @@ Route::delete('customers/{customer}', 'CustomersController@destroy');
 
 // we can use resource route for all of the routes
 // Route::resource('customers','CustomersController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
