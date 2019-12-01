@@ -15,8 +15,11 @@
 
 // shorthand but only get view not pass any data
 Route::view('/','home');
-Route::view('contact','contact');
 Route::view('about','about');
+
+// contact route for send email 
+Route::get('contact','ContactFormController@create');
+Route::post('contact','ContactFormController@store');
 
 // passing data through route
 Route::get('customers', 'CustomersController@index');
