@@ -3,6 +3,7 @@
 @section('content')
 <h4>Contact Us Page</h4>
 
+@if(!session()->has('message'))
 <form action="/contact" method="POST">
    @csrf
    <div class="form-group">
@@ -26,5 +27,6 @@
    <button type="submit" class="btn btn-primary">Send Message</button>
 
 </form>
+@endif
 
 @endsection
