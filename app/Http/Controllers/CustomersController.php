@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Company;
+use App\Mail\WelcomeNewUserMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Events\NewCustomerHasRegisteredEvent;
 
 class CustomersController extends Controller
 {
@@ -58,8 +61,21 @@ class CustomersController extends Controller
         ]);
         
         // mass assignment and for do that we must put fillable/guraded to the model
-        Customer::create($data);
-        return redirect('customers');
+        $customer = Customer::create($data);
+
+        // create a event to mail new user/register in news letter/slack notifications
+        event(new NewCustomerHasRegisteredEvent($customer));
+
+        // send mail to new user
+        // Mail::to($customer->email)->send(new WelcomeNewUserMail());
+
+        // register to news letter
+        // dump('Register to newsletter');
+
+        // slack notification to admin
+        // dump('slack message here');
+
+        // return redirect('customers');
     }
 
     // example of route model binding here
