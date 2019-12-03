@@ -2,23 +2,12 @@
 
 namespace App\Listeners;
 
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Mail\WelcomeNewUserMail;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 
-class WelcomeNewCustomerListener
+class WelcomeNewCustomerListener implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * Handle the event.
      *
@@ -27,6 +16,17 @@ class WelcomeNewCustomerListener
      */
     public function handle($event)
     {
+        sleep(10);
+
+        // full process of queue
+        // listener class implements ShouldQueue
+        // run queue:table and create table
+        // migrate
+        // queue connect sync to database in env
+        // run queue:work
+
+        // need to run php artisan config:cache command for working the queue
+
         // send mail to new user
         Mail::to($event->customer->email)->send(new WelcomeNewUserMail());
     }

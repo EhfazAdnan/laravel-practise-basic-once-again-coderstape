@@ -75,7 +75,7 @@ class CustomersController extends Controller
         // slack notification to admin
         // dump('slack message here');
 
-        // return redirect('customers');
+        return redirect('customers');
     }
 
     // example of route model binding here
